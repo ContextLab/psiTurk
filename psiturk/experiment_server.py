@@ -54,11 +54,11 @@ class ExperimentServer(Application):
         self.loglevels = ["debug", "info", "warning", "error", "critical"]
 
         def on_exit(server):
-            ''' 
-            this is hooked so that it can be called when 
+            '''
+            this is hooked so that it can be called when
             the server is shut down via CTRL+C. Otherwise
             there is no notification to the user that the server
-            has shut down until they hit `enter` and see that 
+            has shut down until they hit `enter` and see that
             the cmdloop prompt suddenly says "server off"
             '''
             print 'Caught ^C, experiment server has shut down.'
@@ -73,6 +73,7 @@ class ExperimentServer(Application):
             'errorlog': config.get("Server Parameters", "logfile"),
             'proc_name': 'psiturk_experiment_server',
             'limit_request_line': '0',
+            'gunicorn_timeout' : config.getint("Server Parameters", "timeout"),
             'on_exit': on_exit
         }
 
