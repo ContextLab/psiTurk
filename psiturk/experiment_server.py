@@ -73,7 +73,7 @@ class ExperimentServer(Application):
             'errorlog': config.get("Server Parameters", "logfile"),
             'proc_name': 'psiturk_experiment_server',
             'limit_request_line': '0',
-            'gunicorn_timeout' : config.getint("Server Parameters", "timeout"),
+            'timeout' : config.getint("Server Parameters", "timeout"),
             'on_exit': on_exit
         }
 
